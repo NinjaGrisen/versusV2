@@ -1,0 +1,61 @@
+// *,*:before,*:after {
+//   margin: 0; padding: 0;
+// }
+// body {
+//   overflow: hidden;
+// }
+// .products {
+//   position: relative;
+//   display: flex;
+//   flex-direction: row;
+//   width: calc(100% - 12px);
+//   background: tomato;
+//   padding: 6px;
+  
+//   &__wrapper {
+//     display: flex;
+//     width: 100%;
+//     transition: all .2s ease;
+//   }
+  
+//   &__move--left,
+//   &__move--right {
+//     position: absolute;
+//     padding: 6px 0;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     transform-origin: center center;
+//     background: black;
+//     color: white;
+//     width: 30px;
+//     border-radius: 50%;
+//     text-align: center;
+//     box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+//     cursor: pointer;
+//   }
+//   &__move--right {
+//     left: calc(100% - 30px);
+//   }
+
+//   &__item {
+//     width: 33%;
+//     height: 93vh;
+//     margin: 6px;
+//     flex-shrink: 0;
+//     background: white;
+//     cursor: pointer;
+//     transition: all .2s ease;
+  
+//     &.active {
+//       width: 80%;
+//       transform-origin: top center;
+//       box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    
+//       &__sibling {
+//         width: 10%;
+//       }
+    
+//     }
+//   }
+// }
+

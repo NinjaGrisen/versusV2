@@ -1,0 +1,65 @@
+.competitors {
+  padding: $space-quarter;
+  margin: $space-quarter 0;
+  
+  &__players {
+    width: 100%;
+    margin: calc(calc(24px / 2) / 2) 0;
+  }
+  
+  &__name {
+    padding: $space-quarter;
+    color: $color-white;
+    margin: 0 12px;
+    border-left: 1px solid lighten($color-main, 12);
+    border-bottom: 1px solid lighten($color-main, 12);
+    box-shadow: inset -1px 1px 1px rgba(0,0,0,.8);
+    background: darken($color-main, 5);
+  }
+  
+  &__vs {
+    color: $color-complimentery;
+  //font-family: 'Quicksand', sans-serif;
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 2rem;
+  @include text-shadow($x: -2px, $y: 1px, $spread: 1px, $color: rgba(0, 0, 0, 1));
+     p{
+       font-size: 2rem;
+       font-weight: bold;
+     }
+    //@include text-shadow($color: rgba(0,0,0,.4));
+  }
+
+  &__info {
+    &-container{
+      width: 100%;
+      margin-top: $space-half;
+    }
+    &-text {
+      color: $color-cta;
+      font-weight: bold;
+    }
+    
+  }
+
+  &__WDL {
+    width: calc(25% - 6px);
+    text-align: center;
+    display: inline-block;
+
+    &:first-child {
+      padding-left: 25%;
+    }
+  }
+
+  &__comparison {
+    margin: $space-quarter 0;
+    width: calc(50% - 15px);
+    height: 30px;
+    background: rgba(255, 255, 255, .3);
+  }
+}
+
+.padding {
+  margin-left: 25%;
+}

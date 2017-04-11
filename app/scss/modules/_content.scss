@@ -1,0 +1,21 @@
+.content {
+  overflow: auto;
+  padding: $space-half;
+  background: $color-main;
+  height: 100%;
+  z-index: 3;
+  position: relative;
+  transition: all .5s cubic-bezier(0.65, 0.04, 0.31, 1.49);
+
+  &--active {
+    @extend .content;
+    height: 92vh;
+    margin-top: 4vh;
+    transform:translateX(70%);
+      @include box-shadow ($spread: 7px);
+
+    @include box-shadow(-2px 2px 7px rgba(0,0,0, 1));
+    border-top: 1px solid lighten($color-main, 15);
+    transition: all .5s cubic-bezier(0.65, 0.04, 0.31, 1.49);
+  }
+}

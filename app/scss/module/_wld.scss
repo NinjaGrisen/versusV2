@@ -1,0 +1,24 @@
+.wld {
+
+    li {
+        position: relative;
+        display: inline;
+        padding-right: $space-quarter;
+        font-size: 12px;
+        font-weight: bold;
+
+        &:after {
+            content: '/';
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        
+        &:nth-last-child(1) {
+            
+            &:after {
+                display: none;
+            }
+        }
+    }
+}

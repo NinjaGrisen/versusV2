@@ -1,0 +1,14 @@
+$color-cta: #2DFDB9;
+$color-complimentery: #ff1456;
+//$color-main: #171642;
+$color-main: #160c40;
+$color-light-main: #CDFDED;
+$color-white: white;
+
+
+$space-default: 24px;
+$space-double: calc(#{$space-default} * 2);
+$space-half: calc(#{$space-default} / 2);
+$space-quarter: calc(#{$space-half} / 2);
+$space-1point5: calc(#{$space-default} + #{$space-half});
+$space-2point5: calc(#{$space-double} + #{$space-half});

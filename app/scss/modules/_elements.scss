@@ -1,0 +1,37 @@
+*,*:after,*:before{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  color: $color-white;
+}
+
+body { font-size:62.5%; }
+
+
+p,a,span,li {
+  //font-family: 'Open Sans', sans-serif;
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 1rem;
+}
+h1,h2 {
+  margin-top: $space-half;
+  color: $color-complimentery;
+  //font-family: 'Quicksand', sans-serif;
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 2rem;
+  font-weight: 300;
+  @include text-shadow($x: -2px, $y: 1px, $spread: 1px, $color: rgba(0, 0, 0, 1));
+}
+
+h3,h4,h5,h6 {
+  margin-top: $space-half;
+  color: $color-white;
+  //font-family: 'Quicksand', sans-serif;
+  font-family: 'Anonymous Pro', monospace;
+  font-size: 1.4rem;
+  @include text-shadow($x: -2px, $y: 1px, $spread: 1px, $color: rgba(0, 0, 0, 1));
+}

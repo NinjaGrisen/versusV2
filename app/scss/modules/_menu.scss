@@ -1,0 +1,38 @@
+.menu {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding-left: 12px;
+  background: lighten($color-main, 3);
+  height: 100vh;
+  z-index: 2;
+  
+  &__list {
+    list-style: none;
+    
+    &__item {
+      margin: 12px;
+      font-weight: normal;
+      width: 60%;
+      height: 40px;
+      border-top: 1px solid lighten($color-main, 20);
+      border-right: 1px solid lighten($color-main, 20);
+      background: lighten($color-main, 6);
+      color: white;
+      text-align: center;
+      line-height: 40px;
+      @include box-shadow ();
+      cursor: pointer;
+    
+      &--active {
+        @extend .menu__list__item;
+        position: relative;
+        font-weight: 600;
+        background: darken($color-main, 1);
+        color: white;
+        border-top: 1px solid lighten($color-main, 15);
+        border-right: 1px solid lighten($color-main, 15);
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+// X left right
+//y up donw
+
+@mixin box-shadow($x: 2px, $y: 2px, $spread: 2px, $color:  black, $highlight: white ) {
+    box-shadow: $x $y $spread $color;
+    border-left: 1px solid $highlight;
+    border-top: 1px solid $highlight;
+    
+}
+
+@mixin text-shadow($x: 2px, $y: 2px, $spread: 2px, $color:  black ) {
+    text-shadow: $x $y $spread $color;
+}
