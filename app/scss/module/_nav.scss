@@ -1,10 +1,33 @@
 .nav {
     &__wrapper {
+        position: fixed;
         padding: $space-half;
         margin: 0 $space-half;
-        min-width: 240px;
-        height: calc(100vh - 96px);
-        background: lighten($color-main, 4);
-        @include box-shadow($highlight: lighten($color-main, 15));
+        min-width: $side-bar-width;
+        min-height: calc(100vh - 96px);
+
+        &--right {
+            @extend .nav__wrapper;
+            position: static;
+            background: lighten($color-main, 4);
+            @include box-shadow($highlight: lighten($color-main, 15));
+        }
+    }
+
+    &__main {
+        flex-grow: 1;
+        align-items: center;
+
+        a {
+            max-width: 180px;
+            width: 100%;
+            height: 50px;
+            margin-top: $space-default;
+            background: lighten($color-main, 10);
+            line-height: 50px;
+            color: white;
+            text-align: center;
+            @include box-shadow($highlight: lighten($color-main, 25));
+        }
     }
 }

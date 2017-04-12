@@ -3,9 +3,14 @@
     padding: 0;
 }
 
+html {
+    font-size: 62.5%;
+}
+
 body {
     background: $color-main;
     color: white;
+    font-size: 1.6rem;
 }
 
 .wrapper {
@@ -17,9 +22,9 @@ body {
 }
 
 .main-content {
-    margin: 0 $space-half;
+    margin: 0 0 0 calc(#{$space-half} + calc(#{$side-bar-width} + 36px));
     padding: $space-half;
-    height: calc(100vh - 96px);
+    min-height: calc(100vh - 96px);
     background: lighten($color-main, 4);
     @include box-shadow($highlight: lighten($color-main, 15));
 }

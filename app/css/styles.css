@@ -8,9 +8,13 @@
   margin: 0;
   padding: 0; }
 
+html {
+  font-size: 62.5%; }
+
 body {
   background: #160c40;
-  color: white; }
+  color: white;
+  font-size: 1.6rem; }
 
 .wrapper {
   display: flex;
@@ -20,58 +24,142 @@ body {
   margin: 24px auto; }
 
 .main-content {
-  margin: 0 calc(24px / 2);
+  margin: 0 0 0 calc(calc(24px / 2) + calc(240px + 36px));
   padding: calc(24px / 2);
-  height: calc(100vh - 96px);
+  min-height: calc(100vh - 96px);
   background: #1c0f51;
   box-shadow: 2px 2px 2px black;
   border-left: 1px solid #2c1880;
   border-top: 1px solid #2c1880; }
 
-.nav__wrapper {
+.nav__wrapper, .nav__wrapper--right {
+  position: fixed;
   padding: calc(24px / 2);
   margin: 0 calc(24px / 2);
   min-width: 240px;
-  height: calc(100vh - 96px);
-  background: #1c0f51;
-  box-shadow: 2px 2px 2px black;
-  border-left: 1px solid #2c1880;
-  border-top: 1px solid #2c1880; }
+  min-height: calc(100vh - 96px); }
+  .nav__wrapper--right {
+    position: static;
+    background: #1c0f51;
+    box-shadow: 2px 2px 2px black;
+    border-left: 1px solid #2c1880;
+    border-top: 1px solid #2c1880; }
+
+.nav__main {
+  flex-grow: 1;
+  align-items: center; }
+  .nav__main a {
+    max-width: 180px;
+    width: 100%;
+    height: 50px;
+    margin-top: 24px;
+    background: #25146b;
+    line-height: 50px;
+    color: white;
+    text-align: center;
+    box-shadow: 2px 2px 2px black;
+    border-left: 1px solid #3b20ab;
+    border-top: 1px solid #3b20ab; }
 
 .challanger__top {
-  justify-content: space-around; }
+  position: relative;
+  justify-content: space-around;
+  height: 90px; }
   .challanger__top-competitors {
-    width: 30px;
-    height: 30px;
+    position: absolute;
+    bottom: calc(calc(24px / 2) / 2);
+    width: 50px;
+    height: 50px;
     background: red;
     border-radius: 50%;
-    display: inline-block; }
+    display: inline-block;
+    z-index: 2;
+    transform: scale(1.1);
+    box-shadow: 2px 2px 2px black;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.5); }
+    .challanger__top-competitors:nth-child(2) {
+      transform: translateX(0) scale(1);
+      animation: leftCompetitor 1s forwards;
+      background: tomato;
+      z-index: 1; }
+    .challanger__top-competitors:nth-child(4) {
+      transform: translateX(0) scale(1);
+      animation: rightCompetitor 1s forwards;
+      background: gold;
+      z-index: 1; }
   .challanger__top h3 {
     width: 100%; }
 
-.challanger__player {
-  position: relative; }
+.challanger__player, .challanger__player--active {
+  position: relative;
+  margin-top: calc(24px / 2);
+  padding: calc(calc(24px / 2) / 2);
+  background: #231367;
+  box-shadow: 2px 2px 2px black;
+  border-left: 1px solid #3b20ab;
+  border-top: 1px solid #3b20ab; }
+  .challanger__player--active {
+    height: 300px; }
+  .challanger__player__recent-matches {
+    color: #927ee7;
+    font-size: 1rem; }
   .challanger__player__wrapper {
     flex-grow: 1;
     padding-left: calc(24px / 2); }
-  .challanger__player__color, .challanger__player__color--secound {
-    width: 5px;
-    height: 35px;
-    position: absolute;
-    left: -10px; }
-    .challanger__player__color--secound {
-      left: -5px; }
   .challanger__player__challange {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     background: red; }
 
+@keyframes centerCompetitor {
+  0% {
+    transform: scale(0.8);
+    box-shadow: 2px 2px black; }
+  33% {
+    transform: scale(1.3);
+    box-shadow: 5px 5px black; }
+  80% {
+    transform: scale(0.9);
+    box-shadow: 1px 1px black; }
+  100% {
+    transform: scale(1.2);
+    box-shadow: 3px 3px black; } }
+
+@keyframes leftCompetitor {
+  0% {
+    transform: translateX(0) scale(1); }
+  33% {
+    transform: translateX(-135%) scale(1.2, 0.8); }
+  50% {
+    transform: translateX(-90%) scale(0.8, 1.2); }
+  66% {
+    transform: translateX(-120%) scale(1.1, 0.9); }
+  80% {
+    transform: translateX(-100%) scale(1); }
+  100% {
+    transform: translateX(-110%) scale(1); } }
+
+@keyframes rightCompetitor {
+  0% {
+    transform: translateX(0) scale(1); }
+  33% {
+    transform: translateX(135%) scale(1.2, 0.8); }
+  50% {
+    transform: translateX(90%) scale(0.8, 1.2); }
+  66% {
+    transform: translateX(120%) scale(1.1, 0.9); }
+  80% {
+    transform: translateX(100%) scale(1); }
+  100% {
+    transform: translateX(110%) scale(1); } }
+
 .wld li {
   position: relative;
   display: inline;
   padding-right: calc(calc(24px / 2) / 2);
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: bold; }
   .wld li:after {
     content: '/';
