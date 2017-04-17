@@ -1,28 +1,34 @@
 (function() {
-  let menuButton = document.querySelector('.header__button');
-  let content = document.querySelector('.content');
-  let challengersButton = document.querySelector('.challengers__draggable');
-  let challengersContainer = document.querySelector('.challengers-container');
+  let _competitors = document.querySelectorAll('.player--container');
 
-  menuButton.addEventListener('click', toggleMenu);
-  challengersButton.addEventListener('click', expandChallengersButton);
-  
+  for(var i = 0; i < _competitors.length; i++) {
+    _competitors[i].addEventListener('click', test);
+      function test(e) {
 
-  function toggleMenu() {
+        var _competitor = e.target;
+        var wrapperChilds;
+        var wld;
+        
+        while(!_competitor.classList.contains("player--container")) {
+           _competitor = _competitor.parentElement;
+        }
+        _competitor.classList.toggle('challanger__player--active');
 
-    if(content.className.includes('--active')) {
-       content.className="content";  
-    } else {
-      content.className="content" + "--active";
-    }
-  }
+        var wrapperChilds = document.querySelector('.challanger__player__wrapper').children;
 
-  function expandChallengersButton() {
-    if(challengersContainer.className.includes('--active')) {
-       challengersContainer.className="challengers-container";  
-    } else {
-      challengersContainer.className="challengers-container" + "--active";
-    }
+
+        for(var i = 0; i < wrapperChilds.length; i++) {
+          if(wrapperChilds[i].classList.contains('wld')) {
+            wld = wrapperChilds[i];
+          }
+        };
+
+        let wldInterval = setInterval(() => wldAnimate('i'), 1000);
+        function wldAnimate(i) {
+          console.log(i);
+        }
+        setTimeout(() => { clearInterval(wldInterval);}, 5000);
+     }
   }
 
 })(); 

@@ -80,12 +80,12 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.5); }
     .challanger__top-competitors:nth-child(2) {
       transform: translateX(0) scale(1);
-      animation: leftCompetitor 1s forwards;
+      animation: leftCompetitor 1s .25s forwards;
       background: tomato;
       z-index: 1; }
     .challanger__top-competitors:nth-child(4) {
       transform: translateX(0) scale(1);
-      animation: rightCompetitor 1s forwards;
+      animation: rightCompetitor 1s .25s forwards;
       background: gold;
       z-index: 1; }
   .challanger__top h3 {
@@ -95,23 +95,54 @@ body {
   position: relative;
   margin-top: calc(24px / 2);
   padding: calc(calc(24px / 2) / 2);
+  max-height: 30px;
   background: #231367;
+  transition: all .5s ease;
   box-shadow: 2px 2px 2px black;
   border-left: 1px solid #3b20ab;
   border-top: 1px solid #3b20ab; }
   .challanger__player--active {
-    height: 300px; }
+    max-height: 300px; }
+    .challanger__player--active .challanger__player__recent-matches {
+      position: relative; }
+      .challanger__player--active .challanger__player__recent-matches li {
+        position: relative;
+        width: 100%;
+        transition: all .30s ease;
+        top: 0;
+        left: 0; }
+        .challanger__player--active .challanger__player__recent-matches li span {
+          left: 3px;
+          display: inline-block; }
+      .challanger__player--active .challanger__player__recent-matches li:nth-child(2) {
+        top: 15px; }
+      .challanger__player--active .challanger__player__recent-matches li:nth-child(3) {
+        top: 30px; }
+      .challanger__player--active .challanger__player__recent-matches li:nth-child(4) {
+        top: 45px; }
+      .challanger__player--active .challanger__player__recent-matches li:nth-child(5) {
+        top: 60px; }
+    .challanger__player--active .active--li {
+      display: block;
+      color: red; }
   .challanger__player__recent-matches {
     color: #927ee7;
     font-size: 1rem; }
   .challanger__player__wrapper {
     flex-grow: 1;
-    padding-left: calc(24px / 2); }
+    padding-left: calc(24px / 2);
+    height: 300px; }
   .challanger__player__challange {
     width: 30px;
     height: 30px;
     border-radius: 50%;
     background: red; }
+
+@keyframes inlineTLoBlock {
+  0% {
+    display: inline; }
+  100% {
+    display: block; } }
 
 @keyframes centerCompetitor {
   0% {
@@ -129,38 +160,58 @@ body {
 
 @keyframes leftCompetitor {
   0% {
+    filter: blur(1px);
     transform: translateX(0) scale(1); }
   33% {
+    filter: blur(1px);
     transform: translateX(-135%) scale(1.2, 0.8); }
   50% {
+    filter: blur(0);
     transform: translateX(-90%) scale(0.8, 1.2); }
   66% {
+    filter: blur(0);
     transform: translateX(-120%) scale(1.1, 0.9); }
   80% {
+    filter: blur(0);
     transform: translateX(-100%) scale(1); }
   100% {
+    filter: blur(0);
     transform: translateX(-110%) scale(1); } }
 
 @keyframes rightCompetitor {
   0% {
+    filter: blur(1px);
     transform: translateX(0) scale(1); }
   33% {
+    filter: blur(1px);
     transform: translateX(135%) scale(1.2, 0.8); }
   50% {
+    filter: blur(0);
     transform: translateX(90%) scale(0.8, 1.2); }
   66% {
+    filter: blur(0);
     transform: translateX(120%) scale(1.1, 0.9); }
   80% {
+    filter: blur(0);
     transform: translateX(100%) scale(1); }
   100% {
+    filter: blur(0);
     transform: translateX(110%) scale(1); } }
 
 .wld li {
   position: relative;
-  display: inline;
+  display: inline-block;
   padding-right: calc(calc(24px / 2) / 2);
   font-size: 1rem;
-  font-weight: bold; }
+  font-weight: bold;
+  top: 0;
+  overflow: hidden; }
+  .wld li span {
+    position: relative;
+    background: red;
+    left: -300px;
+    display: inline-block;
+    transition: all .5s ease; }
   .wld li:after {
     content: '/';
     position: absolute;

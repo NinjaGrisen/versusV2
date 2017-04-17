@@ -20,7 +20,7 @@
             &:nth-child(2) {
                 transform: translateX(0)
                            scale(1);
-                animation: leftCompetitor 1s forwards;
+                animation: leftCompetitor 1s .25s forwards;
                 background: tomato;
                 z-index: 1;
             }
@@ -28,13 +28,13 @@
             &:nth-child(4) {
                 transform: translateX(0)
                            scale(1);
-                animation: rightCompetitor 1s forwards;
+                animation: rightCompetitor 1s .25s forwards;
                 background: gold;
                 z-index: 1;
             }
         }
 
-        h3{
+        h3 {
             width: 100%;
         }
     }
@@ -43,12 +43,52 @@
         position: relative;
         margin-top: $space-half;
         padding: $space-quarter;
+        max-height: 30px;
         background: lighten($color-main, 9);
+        transition: all .5s ease;
         @include box-shadow($highlight: lighten($color-main, 25));
+        
 
         &--active {
             @extend .challanger__player;
-            height: 300px;
+            
+            max-height: 300px;
+            
+            .challanger__player__recent-matches {
+                position: relative;
+
+                li {
+                    position: relative;
+                    width: 100%;
+                    transition: all .30s ease;
+                    top: 0;
+                    left: 0;
+
+                    span {
+                        left: 3px;
+                        display: inline-block;
+                    }
+                }
+                
+                li:nth-child(2) {
+                    top: 15px;
+                }
+                li:nth-child(3) {
+                    top: 30px;
+                }
+                li:nth-child(4) {
+                    top: 45px;
+                }
+                li:nth-child(5) {
+                    top: 60px;
+                }
+                
+            }
+
+            .active--li {
+                display: block;
+                color: red;
+            }
         }
 
         &__recent-matches {
@@ -59,6 +99,7 @@
         &__wrapper {
             flex-grow: 1;
             padding-left: $space-half;
+            height: 300px;
         }
 
         &__challange {
@@ -69,6 +110,17 @@
         }
     }
 }
+
+@keyframes inlineTLoBlock {
+    0% {
+        display: inline;
+    }
+
+    100% {
+        display: block;
+    }
+}
+
 
 @keyframes centerCompetitor {
     0% {
@@ -90,37 +142,41 @@
         transform: scale(1.2);
         box-shadow: 3px 3px black;
     }
-
-
 }
 
 @keyframes leftCompetitor {
     0% {
+        filter: blur(1px);
         transform: translateX(0)
                    scale(1);
     }
 
     33% {
+        filter: blur(1px);
         transform: translateX(-135%)
                    scale(1.2, .8);
     }
 
     50% {
+        filter: blur(0);
         transform: translateX(-90%)
                    scale(.8, 1.2);
     }
 
     66% {
+        filter: blur(0);
         transform: translateX(-120%)
                    scale(1.1, .9);
     }
 
     80% {
+        filter: blur(0);
         transform: translateX(-100%)
                    scale(1);
     }
 
     100% {
+        filter: blur(0);
         transform: translateX(-110%)
                    scale(1);
     }
@@ -128,31 +184,37 @@
 
 @keyframes rightCompetitor {
      0% {
+        filter: blur(1px);
         transform: translateX(0)
                    scale(1);
     }
 
     33% {
+        filter: blur(1px);
         transform: translateX(135%)
                    scale(1.2, .8);
     }
 
     50% {
+        filter: blur(0);
         transform: translateX(90%)
                    scale(.8, 1.2);
     }
 
     66% {
+        filter: blur(0);
         transform: translateX(120%)
                    scale(1.1, .9);
     }
 
     80% {
+        filter: blur(0);
         transform: translateX(100%)
                    scale(1);
     }
 
     100% {
+        filter: blur(0);
         transform: translateX(110%)
                    scale(1);
     }
