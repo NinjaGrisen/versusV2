@@ -1,5 +1,44 @@
+$wlaSpanMargin: 10px;
+$wlaSpanMarginTop: 15px;
 .challanger {
-    
+    &__recent-matches {
+            color: lighten($color-main, 55);
+            position: relative;
+
+            span {
+                position: relative;
+                left: 0;
+                top: 0;
+                font-size: 1rem;
+                font-weight: bold;
+                
+
+                &:after {
+                    content: '/';
+                    position: absolute;
+                    right: -7px;
+                    bottom: 0;
+                }
+
+            } 
+
+            span:nth-child(2) {
+                left: $wlaSpanMargin;
+            }
+            span:nth-child(3) {
+                left: calc(#{$wlaSpanMargin} * 2);
+            }
+            span:nth-child(4) {
+                left: calc(#{$wlaSpanMargin} * 3);
+            }
+            span:nth-child(5) {
+                left: calc(#{$wlaSpanMargin} * 4);
+
+                &:after {
+                    display: none;
+                }
+            }
+        }
     &__top {
         position: relative;
         justify-content: space-around;
@@ -38,38 +77,70 @@
             width: 100%;
         }
     }
+    
+
+    &__wrapper {
+        flex-grow: 1;
+        height: 300px;
+    }
+
+    &__challange {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: red;
+    }
 
     &__player {
         position: relative;
         margin-top: $space-half;
         padding: $space-quarter;
-        max-height: 30px;
+        max-height: 37px;
         background: lighten($color-main, 9);
-        transition: all .5s ease;
+        transition: transform .25s ease;
         @include box-shadow($highlight: lighten($color-main, 25));
         
+        &:hover {
+            transform: scale(1.02);
+            transition: all .25s ease;
+            @include box-shadow($x: 6px, $y: 6px, $spread: 15px, $highlight: lighten($color-main, 30));
+        }
 
         &--active {
             @extend .challanger__player;
-            
+            transform: scale(1.02);
+            transition: all .25s ease;
+            @include box-shadow($x: 6px, $y: 6px, $spread: 15px, $highlight: lighten($color-main, 30));
+
             max-height: 300px;
             
-            .challanger__player__recent-matches {
-                position: relative;
+            .challanger__recent-matches {
+                span {
+                    animation: changePositionOne .5s forwards;
+                    position: absolute;
 
-                li {
-                    position: relative;
-                    width: 100%;
-                    transition: all .30s ease;
-                    top: 0;
-                    left: 0;
-
-                    span {
-                        left: 3px;
-                        display: inline-block;
+                    &:nth-child(2) {
+                        animation: changePositionTwo .5s forwards;
+                    }
+                    &:nth-child(3) {
+                        animation: changePositionThree .5s forwards;
+                    }
+                    &:nth-child(4) {
+                        animation: changePositionFour .5s forwards;
+                    }
+                    &:nth-child(5) {
+                        animation: changePositionFive .5s forwards;
                     }
                 }
-                
+            }
+
+            .challenger__recent-matches {
+                position: relative;
+
+                span {
+                    font-size: 5em;
+                }                
+            
                 li:nth-child(2) {
                     top: 15px;
                 }
@@ -89,24 +160,6 @@
                 display: block;
                 color: red;
             }
-        }
-
-        &__recent-matches {
-            color: lighten($color-main, 55);
-            font-size: 1rem;
-        }
-
-        &__wrapper {
-            flex-grow: 1;
-            padding-left: $space-half;
-            height: 300px;
-        }
-
-        &__challange {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: red;
         }
     }
 }
@@ -217,5 +270,80 @@
         filter: blur(0);
         transform: translateX(110%)
                    scale(1);
+    }
+}
+
+@keyframes changePositionOne {
+    0% {
+    }
+
+    50% {
+        left: 0;
+        top: 0;
+    }
+
+    100% {
+        top: 0;
+        left: 0;
+    }
+}
+@keyframes changePositionTwo {
+    0% {
+
+    }
+
+    50% {
+        left: 0;
+        top: 0;
+    }
+
+    100% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 1);
+    }
+}
+@keyframes changePositionThree {
+    0% {
+
+    }
+
+    50% {
+        left: 0;
+        top: 0;
+    }
+
+    100% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 2);
+    }
+}
+@keyframes changePositionFour {
+    0% {
+
+    }
+
+    50% {
+        left: 0;
+        top: 0;
+    }
+
+    100% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 3);
+    }
+}
+@keyframes changePositionFive {
+    0% {
+
+    }
+
+    50% {
+        left: 0;
+        top: 0;
+    }
+
+    100% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 4);
     }
 }
