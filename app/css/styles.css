@@ -63,30 +63,64 @@ body {
     border-left: 1px solid #3b20ab;
     border-top: 1px solid #3b20ab; }
 
+* {
+  will-change: transform; }
+
+.challanger__duel {
+  margin: 12px;
+  padding: 12px;
+  background: #ff1456;
+  border: none;
+  font-weight: bold;
+  color: #160c40;
+  box-shadow: 3px 3px 3px black;
+  border-left: 1px solid #ff7a9f;
+  border-top: 1px solid #ff7a9f;
+  transition: all .7s ease; }
+  .challanger__duel:hover {
+    transform: scale(1.02);
+    transition: all .7s ease;
+    cursor: pointer;
+    background: #ff1e5d;
+    box-shadow: 6px 6px 12px black;
+    border-left: 1px solid #ffadc4;
+    border-top: 1px solid #ffadc4; }
+
 .challanger__recent-matches {
+  position: relative;
+  font-size: 1rem;
   color: #927ee7;
-  position: relative; }
-  .challanger__recent-matches span {
-    position: relative;
-    left: 0;
-    top: 0;
-    font-size: 1rem;
-    font-weight: bold; }
-    .challanger__recent-matches span:after {
-      content: '/';
-      position: absolute;
-      right: -7px;
-      bottom: 0; }
-  .challanger__recent-matches span:nth-child(2) {
+  overflow: hidden; }
+
+.challanger__match-history {
+  position: relative;
+  left: 0;
+  top: 0;
+  font-weight: bold; }
+  .challanger__match-history:after {
+    content: '/';
+    position: absolute;
+    right: -7px;
+    bottom: 0; }
+  .challanger__match-history:nth-child(2) {
     left: 10px; }
-  .challanger__recent-matches span:nth-child(3) {
+  .challanger__match-history:nth-child(3) {
     left: calc(10px * 2); }
-  .challanger__recent-matches span:nth-child(4) {
+  .challanger__match-history:nth-child(4) {
     left: calc(10px * 3); }
-  .challanger__recent-matches span:nth-child(5) {
+  .challanger__match-history:nth-child(5) {
     left: calc(10px * 4); }
-    .challanger__recent-matches span:nth-child(5):after {
+    .challanger__match-history:nth-child(5):after {
       display: none; }
+
+.challanger__match-results {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 4px;
+  width: calc(100% - 20px);
+  top: 0;
+  left: -50px;
+  transition: all 2s ease; }
 
 .challanger__top {
   position: relative;
@@ -120,7 +154,7 @@ body {
 
 .challanger__wrapper {
   flex-grow: 1;
-  height: 300px; }
+  min-height: 300px; }
 
 .challanger__challange {
   width: 30px;
@@ -135,6 +169,7 @@ body {
   max-height: 37px;
   background: #231367;
   transition: transform .25s ease;
+  overflow: hidden;
   box-shadow: 2px 2px 2px black;
   border-left: 1px solid #3b20ab;
   border-top: 1px solid #3b20ab; }
@@ -145,23 +180,34 @@ body {
     border-left: 1px solid #4224c1;
     border-top: 1px solid #4224c1; }
   .challanger__player--active {
+    max-height: 300px;
     transform: scale(1.02);
     transition: all .25s ease;
     box-shadow: 6px 6px 15px black;
     border-left: 1px solid #4224c1;
-    border-top: 1px solid #4224c1;
-    max-height: 300px; }
-    .challanger__player--active .challanger__recent-matches span {
-      animation: changePositionOne .5s forwards;
-      position: absolute; }
-      .challanger__player--active .challanger__recent-matches span:nth-child(2) {
-        animation: changePositionTwo .5s forwards; }
-      .challanger__player--active .challanger__recent-matches span:nth-child(3) {
-        animation: changePositionThree .5s forwards; }
-      .challanger__player--active .challanger__recent-matches span:nth-child(4) {
-        animation: changePositionFour .5s forwards; }
-      .challanger__player--active .challanger__recent-matches span:nth-child(5) {
-        animation: changePositionFive .5s forwards; }
+    border-top: 1px solid #4224c1; }
+    .challanger__player--active .challanger__match-results {
+      animation: matchResultsAnimation .8s 1.2s forwards; }
+    .challanger__player--active .challanger__match-history {
+      position: absolute;
+      width: 10px;
+      background: #231367;
+      animation: changePositionOne 1s forwards; }
+      .challanger__player--active .challanger__match-history:after {
+        content: ":";
+        display: block; }
+      .challanger__player--active .challanger__match-history:first-child {
+        z-index: 99; }
+      .challanger__player--active .challanger__match-history:nth-child(2) {
+        animation: changePositionTwo .7s forwards; }
+      .challanger__player--active .challanger__match-history:nth-child(3) {
+        animation: changePositionThree .7s .15s forwards; }
+      .challanger__player--active .challanger__match-history:nth-child(4) {
+        animation: changePositionFour .7s .30s forwards; }
+      .challanger__player--active .challanger__match-history:nth-child(5) {
+        animation: changePositionFive .7s .45s forwards; }
+        .challanger__player--active .challanger__match-history:nth-child(5):after {
+          display: block; }
     .challanger__player--active .challenger__recent-matches {
       position: relative; }
       .challanger__player--active .challenger__recent-matches span {
@@ -249,39 +295,110 @@ body {
 
 @keyframes changePositionTwo {
   0% { }
-  50% {
+  40% {
     left: 0;
     top: 0; }
+  50% {
+    left: 0;
+    top: calc(15px * 2); }
+  60% {
+    left: 0;
+    top: calc(15px * .5); }
+  70% {
+    left: 0;
+    top: calc(15px * 1.5); }
+  80% {
+    left: 0;
+    top: calc(15px * .8); }
+  90% {
+    left: 0;
+    top: calc(15px * 1.2); }
   100% {
     left: 0;
     top: calc(15px * 1); } }
 
 @keyframes changePositionThree {
   0% { }
-  50% {
+  40% {
     left: 0;
     top: 0; }
+  50% {
+    left: 0;
+    top: calc(15px * 3); }
+  60% {
+    left: 0;
+    top: calc(15px * 1); }
+  70% {
+    left: 0;
+    top: calc(15px * 2.5); }
+  80% {
+    left: 0;
+    top: calc(15px * 1.8); }
+  90% {
+    left: 0;
+    top: calc(15px * 2.2); }
   100% {
     left: 0;
     top: calc(15px * 2); } }
 
 @keyframes changePositionFour {
   0% { }
-  50% {
+  40% {
     left: 0;
     top: 0; }
+  50% {
+    left: 0;
+    top: calc(15px * 4); }
+  60% {
+    left: 0;
+    top: calc(15px * 2); }
+  70% {
+    left: 0;
+    top: calc(15px * 3.5); }
+  80% {
+    left: 0;
+    top: calc(15px * 2.8); }
+  90% {
+    left: 0;
+    top: calc(15px * 3.2); }
   100% {
     left: 0;
     top: calc(15px * 3); } }
 
 @keyframes changePositionFive {
   0% { }
-  50% {
+  40% {
     left: 0;
     top: 0; }
+  50% {
+    left: 0;
+    top: calc(15px * 5); }
+  60% {
+    left: 0;
+    top: calc(15px * 3); }
+  70% {
+    left: 0;
+    top: calc(15px * 4.5); }
+  80% {
+    left: 0;
+    top: calc(15px * 3.8); }
+  90% {
+    left: 0;
+    top: calc(15px * 4.2); }
   100% {
     left: 0;
     top: calc(15px * 4); } }
+
+@keyframes matchResultsAnimation {
+  0% { }
+  25% {
+    left: 50px; }
+  60% {
+    left: 25px; }
+  85% {
+    left: 30px; }
+  100% {
+    left: 27px; } }
 
 .wld li {
   position: relative;

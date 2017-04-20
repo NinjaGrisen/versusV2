@@ -1,44 +1,77 @@
 $wlaSpanMargin: 10px;
 $wlaSpanMarginTop: 15px;
+* {
+    will-change: transform; 
+}
+
 .challanger {
+
+    &__duel {
+        margin: 12px;
+        padding: 12px;
+        background: $color-complimentery;
+        border: none;
+        font-weight: bold;
+        color: $color-main;
+        @include box-shadow($x: 3px, $y: 3px, $spread: 3px, $highlight: lighten($color-complimentery, 20));
+        transition: all .7s ease;
+
+        &:hover {
+            transform: scale(1.02);
+            transition: all .7s ease;
+            cursor: pointer;
+            background: lighten($color-complimentery, 2);
+            @include box-shadow($x: 6px, $y: 6px, $spread: 12px, $highlight: lighten($color-complimentery, 30));
+        }
+    }
+
     &__recent-matches {
-            color: lighten($color-main, 55);
-            position: relative;
+        position: relative;
+        font-size: 1rem;
+        color: lighten($color-main, 55);    
+        overflow: hidden;    
+    }
 
-            span {
-                position: relative;
-                left: 0;
-                top: 0;
-                font-size: 1rem;
-                font-weight: bold;
-                
+    &__match-history {
+        position: relative;
+        left: 0;
+        top: 0;
+        font-weight: bold;
+        
 
-                &:after {
-                    content: '/';
-                    position: absolute;
-                    right: -7px;
-                    bottom: 0;
-                }
+        &:after {
+            content: '/';
+            position: absolute;
+            right: -7px;
+            bottom: 0;
+        }
+        &:nth-child(2) {
+            left: $wlaSpanMargin;
+        }
+        &:nth-child(3) {
+            left: calc(#{$wlaSpanMargin} * 2);
+        }
+        &:nth-child(4) {
+            left: calc(#{$wlaSpanMargin} * 3);
+        }
+        &:nth-child(5) {
+            left: calc(#{$wlaSpanMargin} * 4);
 
-            } 
-
-            span:nth-child(2) {
-                left: $wlaSpanMargin;
-            }
-            span:nth-child(3) {
-                left: calc(#{$wlaSpanMargin} * 2);
-            }
-            span:nth-child(4) {
-                left: calc(#{$wlaSpanMargin} * 3);
-            }
-            span:nth-child(5) {
-                left: calc(#{$wlaSpanMargin} * 4);
-
-                &:after {
-                    display: none;
-                }
+            &:after {
+                display: none;
             }
         }
+    } 
+    &__match-results {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 4px;
+        width: calc(100% - 20px);
+        top: 0;
+        left: -50px;
+        transition: all 2s ease;
+    }
+
     &__top {
         position: relative;
         justify-content: space-around;
@@ -81,7 +114,7 @@ $wlaSpanMarginTop: 15px;
 
     &__wrapper {
         flex-grow: 1;
-        height: 300px;
+        min-height: 300px;
     }
 
     &__challange {
@@ -98,6 +131,7 @@ $wlaSpanMarginTop: 15px;
         max-height: 37px;
         background: lighten($color-main, 9);
         transition: transform .25s ease;
+        overflow: hidden;
         @include box-shadow($highlight: lighten($color-main, 25));
         
         &:hover {
@@ -108,28 +142,46 @@ $wlaSpanMarginTop: 15px;
 
         &--active {
             @extend .challanger__player;
+            max-height: 300px;
             transform: scale(1.02);
             transition: all .25s ease;
             @include box-shadow($x: 6px, $y: 6px, $spread: 15px, $highlight: lighten($color-main, 30));
-
-            max-height: 300px;
             
-            .challanger__recent-matches {
-                span {
-                    animation: changePositionOne .5s forwards;
+            .challanger {
+                &__match-results {
+                    animation: matchResultsAnimation .8s 1.2s forwards; 
+                }
+
+                &__match-history {
                     position: absolute;
+                    width: 10px;
+                    background: lighten($color-main, 9);
+                    animation: changePositionOne 1s forwards;
+
+                    &:after {
+                        content: ":";
+                        display: block;
+                    }
+
+                    &:first-child {
+                        z-index: 99;
+                    }
 
                     &:nth-child(2) {
-                        animation: changePositionTwo .5s forwards;
+                        animation: changePositionTwo .7s forwards;
                     }
                     &:nth-child(3) {
-                        animation: changePositionThree .5s forwards;
+                        animation: changePositionThree .7s .15s forwards;
                     }
                     &:nth-child(4) {
-                        animation: changePositionFour .5s forwards;
+                        animation: changePositionFour .7s .30s forwards;
                     }
                     &:nth-child(5) {
-                        animation: changePositionFive .5s forwards;
+                        animation: changePositionFive .7s .45s forwards;
+
+                        &:after {
+                            display: block;
+                        }
                     }
                 }
             }
@@ -292,9 +344,33 @@ $wlaSpanMarginTop: 15px;
 
     }
 
-    50% {
+    40% {
         left: 0;
         top: 0;
+    }
+
+    50% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 2);
+    }
+
+    60% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * .5);
+    }
+
+    70% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 1.5);
+    }
+
+    80% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * .8);
+    }
+    90% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 1.2);
     }
 
     100% {
@@ -303,13 +379,35 @@ $wlaSpanMarginTop: 15px;
     }
 }
 @keyframes changePositionThree {
-    0% {
+    0% {}
 
+    40% {
+        left: 0;
+        top: 0;
     }
 
     50% {
         left: 0;
-        top: 0;
+        top: calc(#{$wlaSpanMarginTop} * 3);
+    }
+
+    60% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 1);
+    }
+
+    70% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 2.5);
+    }
+
+    80% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 1.8);
+    }
+    90% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 2.2);
     }
 
     100% {
@@ -318,13 +416,35 @@ $wlaSpanMarginTop: 15px;
     }
 }
 @keyframes changePositionFour {
-    0% {
+    0% {}
 
+    40% {
+        left: 0;
+        top: 0;
     }
 
     50% {
         left: 0;
-        top: 0;
+        top: calc(#{$wlaSpanMarginTop} * 4);
+    }
+
+    60% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 2);
+    }
+
+    70% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 3.5);
+    }
+
+    80% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 2.8);
+    }
+    90% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 3.2);
     }
 
     100% {
@@ -333,17 +453,59 @@ $wlaSpanMarginTop: 15px;
     }
 }
 @keyframes changePositionFive {
-    0% {
+    0% {}
 
+    40% {
+        left: 0;
+        top: 0;
     }
 
     50% {
         left: 0;
-        top: 0;
+        top: calc(#{$wlaSpanMarginTop} * 5);
+    }
+
+    60% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 3);
+    }
+
+    70% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 4.5);
+    }
+
+    80% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 3.8);
+    }
+    90% {
+        left: 0;
+        top: calc(#{$wlaSpanMarginTop} * 4.2);
     }
 
     100% {
         left: 0;
         top: calc(#{$wlaSpanMarginTop} * 4);
+    }
+}
+
+@keyframes matchResultsAnimation {
+    0% {}
+
+    25% {
+        left: 50px;
+    }
+
+    60% {
+        left: 25px;
+    }
+
+    85% {
+        left: 30px;
+    } 
+
+    100% {
+        left: 27px;
     }
 }
