@@ -6,18 +6,26 @@ $wlaSpanMarginTop: 15px;
 
 .challanger {
 
+    &__profile-link {
+        @extend .link-styling;
+        top: -2px;
+        left: -200px;
+    }
+
     &__duel {
-        margin: 12px;
-        padding: 12px;
+        position: relative;
+        top: -200px;
+        margin: $space-half;
+        padding: $space-half;
         background: $color-complimentery;
         border: none;
         font-weight: bold;
+        font-size: 1.4rem;
         color: $color-main;
         @include box-shadow($x: 3px, $y: 3px, $spread: 3px, $highlight: lighten($color-complimentery, 20));
         transition: all .7s ease;
 
         &:hover {
-            transform: scale(1.02);
             transition: all .7s ease;
             cursor: pointer;
             background: lighten($color-complimentery, 2);
@@ -135,7 +143,6 @@ $wlaSpanMarginTop: 15px;
         @include box-shadow($highlight: lighten($color-main, 25));
         
         &:hover {
-            transform: scale(1.02);
             transition: all .25s ease;
             @include box-shadow($x: 6px, $y: 6px, $spread: 15px, $highlight: lighten($color-main, 30));
         }
@@ -143,12 +150,21 @@ $wlaSpanMarginTop: 15px;
         &--active {
             @extend .challanger__player;
             max-height: 300px;
-            transform: scale(1.02);
             transition: all .25s ease;
             @include box-shadow($x: 6px, $y: 6px, $spread: 15px, $highlight: lighten($color-main, 30));
             
             .challanger {
+                
+                &__duel {
+                    animation: duelButtonAnimation .8s .5s forwards;
+                }
+
+                &__profile-link {
+                    animation: profileLinkAnimation .8s .5s forwards; 
+                }
+
                 &__match-results {
+                    background: lighten($color-main, 9);
                     animation: matchResultsAnimation .8s 1.2s forwards; 
                 }
 
@@ -246,6 +262,38 @@ $wlaSpanMarginTop: 15px;
     100% {
         transform: scale(1.2);
         box-shadow: 3px 3px black;
+    }
+}
+
+@keyframes duelButtonAnimation {
+    0% {
+        filter: blur(1px);
+        top: -200px;
+    }
+
+    33% {
+        filter: blur(1px);
+        top: 50px;
+    }
+
+    50% {
+        filter: blur(0);
+        top: 30px;
+    }
+
+    66% {
+        filter: blur(0);
+        top: 50px;
+    }
+
+    80% {
+        filter: blur(0);
+        top: 50px;
+    }
+
+    100% {
+        filter: blur(0);
+        top: 50px;
     }
 }
 
@@ -489,7 +537,25 @@ $wlaSpanMarginTop: 15px;
         top: calc(#{$wlaSpanMarginTop} * 4);
     }
 }
+@keyframes profileLinkAnimation {
+    0% {}
 
+    25% {
+        left: 15px;
+    }
+
+    60% {
+        left: -5px;
+    }
+
+    85% {
+        left: 3px;
+    } 
+
+    100% {
+        left: 0px;
+    }
+}
 @keyframes matchResultsAnimation {
     0% {}
 

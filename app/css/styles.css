@@ -1,3 +1,22 @@
+.link-styling, .challanger__profile-link {
+  display: inline-block;
+  border-bottom: 1px solid #2DFDB9;
+  box-shadow: inset 0 0 0 transparent;
+  padding: 1px 2px 0 2px;
+  margin-top: calc(calc(24px / 2) / 2);
+  text-decoration: none;
+  transition: all .3s ease-in-out;
+  color: #b6a9ef;
+  font-weight: bold;
+  font-size: 1.3rem;
+  cursor: pointer;
+  position: relative; }
+  .link-styling:hover, .challanger__profile-link:hover {
+    cursor: pinter;
+    color: #160c40;
+    font-weight: bold;
+    box-shadow: inset 0 -1.6em 0 #2DFDB9; }
+
 .flex, .flex__column {
   display: flex;
   flex-wrap: wrap; }
@@ -66,19 +85,25 @@ body {
 * {
   will-change: transform; }
 
+.challanger__profile-link {
+  top: -2px;
+  left: -200px; }
+
 .challanger__duel {
-  margin: 12px;
-  padding: 12px;
+  position: relative;
+  top: -200px;
+  margin: calc(24px / 2);
+  padding: calc(24px / 2);
   background: #ff1456;
   border: none;
   font-weight: bold;
+  font-size: 1.4rem;
   color: #160c40;
   box-shadow: 3px 3px 3px black;
   border-left: 1px solid #ff7a9f;
   border-top: 1px solid #ff7a9f;
   transition: all .7s ease; }
   .challanger__duel:hover {
-    transform: scale(1.02);
     transition: all .7s ease;
     cursor: pointer;
     background: #ff1e5d;
@@ -174,19 +199,22 @@ body {
   border-left: 1px solid #3b20ab;
   border-top: 1px solid #3b20ab; }
   .challanger__player:hover, .challanger__player--active:hover {
-    transform: scale(1.02);
     transition: all .25s ease;
     box-shadow: 6px 6px 15px black;
     border-left: 1px solid #4224c1;
     border-top: 1px solid #4224c1; }
   .challanger__player--active {
     max-height: 300px;
-    transform: scale(1.02);
     transition: all .25s ease;
     box-shadow: 6px 6px 15px black;
     border-left: 1px solid #4224c1;
     border-top: 1px solid #4224c1; }
+    .challanger__player--active .challanger__duel {
+      animation: duelButtonAnimation .8s .5s forwards; }
+    .challanger__player--active .challanger__profile-link {
+      animation: profileLinkAnimation .8s .5s forwards; }
     .challanger__player--active .challanger__match-results {
+      background: #231367;
       animation: matchResultsAnimation .8s 1.2s forwards; }
     .challanger__player--active .challanger__match-history {
       position: absolute;
@@ -243,6 +271,26 @@ body {
   100% {
     transform: scale(1.2);
     box-shadow: 3px 3px black; } }
+
+@keyframes duelButtonAnimation {
+  0% {
+    filter: blur(1px);
+    top: -200px; }
+  33% {
+    filter: blur(1px);
+    top: 50px; }
+  50% {
+    filter: blur(0);
+    top: 30px; }
+  66% {
+    filter: blur(0);
+    top: 50px; }
+  80% {
+    filter: blur(0);
+    top: 50px; }
+  100% {
+    filter: blur(0);
+    top: 50px; } }
 
 @keyframes leftCompetitor {
   0% {
@@ -388,6 +436,17 @@ body {
   100% {
     left: 0;
     top: calc(15px * 4); } }
+
+@keyframes profileLinkAnimation {
+  0% { }
+  25% {
+    left: 15px; }
+  60% {
+    left: -5px; }
+  85% {
+    left: 3px; }
+  100% {
+    left: 0px; } }
 
 @keyframes matchResultsAnimation {
   0% { }

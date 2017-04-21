@@ -1,0 +1,22 @@
+.link-styling {
+    display: inline-block;  
+    border-bottom: 1px solid $color-cta;
+    box-shadow: inset 0 0 0 transparent;
+    padding: 1px 2px 0 2px;
+    margin-top: $space-quarter;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+    color: lighten($color-main, 65);
+    font-weight: bold;
+    font-size: 1.3rem;
+    cursor: pointer;
+    position: relative;
+
+    
+    &:hover {
+      cursor: pinter;
+      color: $color-main;
+      font-weight: bold;
+      box-shadow: inset 0 -1.6em 0 $color-cta;
+    }
+}
